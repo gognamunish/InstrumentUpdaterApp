@@ -1,7 +1,7 @@
 package com.gognamunish.referencedata.process;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.ConcurrentHashMap;
 
 import com.gognamunish.referencedata.factory.InstrumentMergerFactory;
 import com.gognamunish.referencedata.factory.InstrumentMergerFactory.InstrumentMerger;
@@ -11,7 +11,7 @@ import com.gognamunish.referencedata.model.Instrument;
 public class InstrumentProcessor {
 
 	private Instrument lastInternallyPublishedInstrument;
-	private Map<String, Instrument> messages = new HashMap<>();
+	private Map<String, Instrument> messages = new ConcurrentHashMap<>();
 
 	public void process(Message message) {
 		Instrument arrivingInstrument = message.getInstrument();
